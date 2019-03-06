@@ -1,0 +1,52 @@
+version: '3.7'
+
+# networks:
+#   beacon:
+
+services:
+
+  # # Postgres Database (using default port 5432)
+  # db:
+  #   environment:
+  #     - POSTGRES_USER=microaccounts_dev
+  #     - POSTGRES_PASSWORD=r783qjkldDsiu
+  #     - POSTGRES_DB=elixir_beacon_dev
+  #   hostname: db
+  #   container_name: db
+  #   image: postgres:11
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - ./db/beacon.sql:/docker-entrypoint-initdb.d/1_beacon.sql:ro
+  #     - ./db/functions.sql:/docker-entrypoint-initdb.d/2_functions.sql:ro
+  #     - ./db/grants.sql:/docker-entrypoint-initdb.d/3_grants.sql:ro
+  #   networks:
+  #     - beacon
+
+  # beacon:
+  #   depends_on:
+  #     - db
+  #   expose:
+  #     - 9075
+  #   ports:
+  #     - "9075:9075"
+  #   image: openjdk:jre
+  #   container_name: beacon
+  #   networks:
+  #     - beacon
+  #   volumes:
+  #     - ./beacon/elixir-beacon-0.0.1-SNAPSHOT.jar:/beacon.jar
+  #     - ./beacon/application-dev.properties:/application-dev.properties
+  #   entrypoint: ["/usr/bin/java", "-jar", "/beacon.jar", "--spring.profiles.active=dev"]
+
+  beacon:
+    environment:
+      - POSTGRES_USER=microaccounts_dev
+      - POSTGRES_PASSWORD=r783qjkldDsiu
+      - POSTGRES_DB=elixir_beacon_dev
+    ports:
+      - "9075:9075"
+      - "5432:5432"
+    image: elixir/beacon
+    container_name: beacon
+    entrypoint: ["/beacon/entrypoint.sh"]
