@@ -14,7 +14,7 @@ Clone the repository (version 1.0.1):
 	cd code
 	git checkout v1.0.1
 
-Follow the instructions from [reference implementation](https://github.com/ga4gh-beacon/beacon-elixir/tree/v1.0.1#managing-the-code)
+Follow the instructions from the [reference implementation](https://github.com/ga4gh-beacon/beacon-elixir/tree/v1.0.1#managing-the-code)
 
 # Step 2: Prepare the docker image
 
@@ -47,6 +47,12 @@ You can then contact the beacon with:
 	curl http://localhost:9075/elixirbeacon/v1/beacon/
 
 Or open a web browser at the above URL
+
+Here are a few [other examples of queries](https://github.com/ga4gh-beacon/beacon-elixir/tree/v1.0.1#beaconquery):
+
+* http://localhost:9075/elixirbeacon/v1/beacon/query?referenceName=Y&start=2655179&referenceBases=G&alternateBases=A&assemblyId=GRCh37&includeDatasetResponses=NONE
+* http://localhost:9075/elixirbeacon/v1/beacon/query?variantType=DUP&referenceName=21&startMin=45039444&startMax=45039445&endMin=45084561&endMax=45084562&referenceBases=T&assemblyId=GRCh37&includeDatasetResponses=ALL
+* http://localhost:9075/elixirbeacon/v1/beacon/query?variantType=DEL&referenceName=21&start=15399042&end=15419114&referenceBases=T&assemblyId=GRCh37&includeDatasetResponses=ALL
 
 # Step 4: Tear down everything
 
