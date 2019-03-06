@@ -1,9 +1,9 @@
 SERVICE=beacon
 
-.PHONE: all .env build up down ps
+.PHONE: all build up down log
 
 build:
-	docker build -t elixir/beacon .
+	docker build -t elixir/$(SERVICE) .
 
 up:
 	docker run -d \
@@ -13,12 +13,11 @@ up:
 	       -e POSTGRES_DB=elixir_beacon_dev \
 	       -p "9075:9075" \
 	       -p "5432:5432" \
-               elixir/beacon
+               elixir/$(SERVICE)
 
 down:
 	-docker kill $(SERVICE)
 	docker rm $(SERVICE)
-	docker volume prune
 
 exec:
 	@docker exec -it $(SERVICE) bash
