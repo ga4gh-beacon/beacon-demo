@@ -22,6 +22,10 @@ Clone the repository (version 1.0.1):
 	cd code
 	git checkout v1.0.1
 
+Do update the CORS setting in `elixir_beacon/src/main/resources/META-INF/corsFilter.properties` with:
+
+	allowed.origins=*
+
 Follow the instructions from the [reference implementation](https://github.com/ga4gh-beacon/beacon-elixir/tree/v1.0.1#managing-the-code)
 
 # Step 3: Prepare the docker image
@@ -35,6 +39,8 @@ Copy the java target, the data to load and the database definitions to `/beacon`
 	cp code/elixir_beacon/target/elixir-beacon-1.0.1-SNAPSHOT.jar beacon/beacon.jar
 	cp code/elixir_beacon/src/main/resources/application-dev.properties beacon/.
 	cp -r code/elixir_beacon/src/main/resources/META-INF/1000_genomes_data beacon/data
+
+Do update the API endpoint from `v1` to `v1.0.1` in the `beacon/application-dev.properties` properties file.
 
 The docker image is named `elixir/beacon` and is created with:
 
