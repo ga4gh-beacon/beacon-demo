@@ -4,7 +4,15 @@ This repository helps you setup a beacon demo in a docker container.
 
 For convenience, we created a Makefile, that contains all the necessary commands.
 
-## Step 1: Compile the java code
+## Step 1: Get the source files
+
+Clone this repository to your machine
+
+	git clone https://github.com/ga4gh-beacon/beacon-demo
+	# and go inside
+	cd beacon-demo
+
+## Step 2: Compile the java code
 
 This step is done on your machine, it is simpler than in a docker container.
 
@@ -16,7 +24,7 @@ Clone the repository (version 1.0.1):
 
 Follow the instructions from the [reference implementation](https://github.com/ga4gh-beacon/beacon-elixir/tree/v1.0.1#managing-the-code)
 
-# Step 2: Prepare the docker image
+# Step 3: Prepare the docker image
 
 We use a Postgres database, running in a docker container. We add the jar file created with step 1, and load some data.
 
@@ -32,7 +40,7 @@ The docker image is named `elixir/beacon` and is created with:
 
 	make build
 
-# Step 3: Instanciate a docker container from the image
+# Step 4: Instanciate a docker container from the image
 
 Once the image is build, run:
 
@@ -54,7 +62,7 @@ Here are a few [other examples of queries](https://github.com/ga4gh-beacon/beaco
 * http://localhost:9075/elixirbeacon/v1/beacon/query?variantType=DUP&referenceName=21&startMin=45039444&startMax=45039445&endMin=45084561&endMax=45084562&referenceBases=T&assemblyId=GRCh37&includeDatasetResponses=ALL
 * http://localhost:9075/elixirbeacon/v1/beacon/query?variantType=DEL&referenceName=21&start=15399042&end=15419114&referenceBases=T&assemblyId=GRCh37&includeDatasetResponses=ALL
 
-# Step 4: Tear down everything
+# Step 5: Tear down everything
 
 	make down
 	
